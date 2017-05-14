@@ -1,0 +1,70 @@
+<div class="uk-container uk-container-small">
+
+    <div class="uk-margin-medium-top">
+        <h2>Post a book</h2>
+        <h4 class="uk-margin-remove-top">Enter the details of the book to create a post.</h4>
+    </div>
+
+    <form class="uk-form-horizontal uk-margin-medium">
+        <div class="uk-margin">
+            <label class="uk-form-label" for="isbn">ISBN no.</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" id="isbn" type="text">
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="bookname">Book Name</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" id="bookname" type="text">
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="author">Author</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" id="author" type="text">
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="publication">Publication</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" id="publication" type="text">
+            </div>
+        </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="preferred-city">City</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" id="preferred-city" type="text" placeholder="The city in which the book is available.">
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <label class="uk-form-label" for="condition">Condition</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" id="condition" type="text" placeholder="The condition of the book.">
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <label class="uk-form-label" for="condition">Image</label>
+            <div class="uk-form-controls">
+                <div uk-form-custom>
+                    <input type="file" accept="image/*">
+                    <button class="uk-button uk-button-default" type="button" tabindex="-1">Select</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <label class="uk-form-label" for="details">Additional Details</label>
+            <div class="uk-form-controls">
+                <textarea class="uk-textarea" id="details" placeholder="Any additional details you want to provide about the book."></textarea>
+            </div>
+        </div>
+        <div class="uk-margin-medium">
+            <button class="uk-button uk-button-primary">Submit</button>
+            &nbsp;&nbsp;&nbsp;
+            <button class="uk-button">Clear</button>
+        </div>
+    </form>
+
+</div>
