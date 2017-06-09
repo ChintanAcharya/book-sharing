@@ -13,44 +13,32 @@ const user = function (name, email, password, address, contact, city, pincode) {
     this.city = city;
     this.pincode = pincode;
 
-    this.validate = function () {
+    this.validate = () => {
         //TODO: Validation
         return true;
     };
 
     let self = this;
 
-    this.addToDatabase = (cb) => {
+    this.addToDatabase = cb => {
         if (self.validate()) {
-            MongoClient.connect(dbUrl, (err, db) => {
-                if (err) {
-                    cb(err);
-                }
-                else {
-                    db.collection('user').insertOne({
-                        name: self.name,
-                        email: self.email,
-                        password: self.password,
-                        address: self.address,
-                        contact: self.contact,
-                        city: self.city,
-                        pincode: self.pincode
-                    }, function (err, result) {
-                        if (err) {
-                            cb(err);
-                        }
-                        else {
-                            cb(null);
-                        }
-                    });
-                }
-            });
+            MongoClient.connect(dbUrl)
+                .then(db => db.collection('user').insertOne({
+                    name: self.name,
+                    email: self.email,
+                    password: self.password,
+                    address: self.address,
+                    contact: self.contact,
+                    city: self.city,
+                    pincode: self.pincode
+                }))
+                .then(result => cb(null))
+                .catch(err => cb(err));
         }
         else {
-            cb(new Error("Invalid data."));
+            cb(new Error("Invalid data"));
         }
-    };
-
+    }
 };
 
 module.exports = user;

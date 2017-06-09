@@ -4,11 +4,10 @@ const MongoClient = require('mongodb').MongoClient,
 const dbStr = 'mongodb://localhost/booksharing';
 
 const login = (user, pass, cb) => {
-    MongoClient.connect(dbStr, (err, db) => {
-        db.collection('user').findOne({ email: user }, (err, doc) => {
-            if (err)
-                cb(err);
-            else if (doc === null)
+    MongoClient.connect(dbStr)
+        .then((db) => db.collection('user').findOne({email: user}))
+        .then((doc) => {
+            if (doc === null)
                 cb(null, null);
             else {
                 let storedPass = doc.password;
@@ -20,8 +19,8 @@ const login = (user, pass, cb) => {
                     cb(null, null);
                 }
             }
-        });
-    });
+        })
+        .catch((err) => cb(err));
 };
 
 module.exports = login;
