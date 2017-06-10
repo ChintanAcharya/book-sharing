@@ -20,7 +20,7 @@ const user = function (name, email, password, address, contact, city, pincode) {
 
     let self = this;
 
-    this.addToDatabase = cb => {
+    this.addToDatabase = (cb) => {
         if (self.validate()) {
             MongoClient.connect(dbUrl)
                 .then(db => db.collection('user').insertOne({
@@ -36,7 +36,7 @@ const user = function (name, email, password, address, contact, city, pincode) {
                 .catch(err => cb(err));
         }
         else {
-            cb(new Error("Invalid data"));
+            return cb(new Error("Invalid data"));
         }
     }
 };

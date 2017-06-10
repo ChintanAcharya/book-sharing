@@ -8,16 +8,11 @@ const login = (user, pass, cb) => {
         .then((db) => db.collection('user').findOne({email: user}))
         .then((doc) => {
             if (doc === null)
-                cb(null, null);
+                return cb(null, null);
             else {
                 let storedPass = doc.password;
                 let result = passwordEncrypt.verify(pass, storedPass.salt, storedPass.iterations).toString() === storedPass.hash.toString();
-                if (result) {
-                    cb(null, doc)
-                }
-                else {
-                    cb(null, null);
-                }
+                return result ? cb(null, doc) : cb(null, null);
             }
         })
         .catch((err) => cb(err));

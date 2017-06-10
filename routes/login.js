@@ -4,15 +4,15 @@ const assert = require('assert'),
     router = express.Router();
 
 /* GET login page. */
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
     res.render('login', {title: "Login", session: req.session});
 });
 
 /* POST login */
-router.post('/', function (req, res, next) {
-    var username = req.body.username;
-    var password = req.body.password;
-    login(username, password, function (err, result) {
+router.post('/', (req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+    login(username, password, (err, result) => {
         assert.equal(null, err);
         if (result) {
             //TODO: FIX ME
