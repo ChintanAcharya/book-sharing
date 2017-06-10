@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 
-const dbStr = 'mongodb://localhost/booksharing';
+const dbUrl = require('../config').dbUrl;
 
 const request = function (isbn, name, author, publication, city, details, userId) {
 
@@ -20,7 +20,7 @@ const request = function (isbn, name, author, publication, city, details, userId
 
     this.addToDatabase = (cb) => {
         if (this.validate()) {
-            MongoClient.connect(dbStr)
+            MongoClient.connect(dbUrl)
                 .then(db => db.collection('requests').insertOne({
                     isbn: self.isbn,
                     name: self.name,

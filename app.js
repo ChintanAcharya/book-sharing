@@ -24,6 +24,9 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+//session secret
+const sessionSecret = require('./config').sessionSecret;
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -31,12 +34,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: "chintan2763" }));
+app.use(session({secret: sessionSecret}));
 
 // route config
 app.use('/', index);
 app.use('/login', login);
-app.use('/register',register);
+app.use('/register', register);
 app.use('/post', auth, post);
 app.use('/request', auth, request);
 
@@ -48,7 +51,7 @@ app.use((req, res, next) => {
 });
 
 // error handler
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};

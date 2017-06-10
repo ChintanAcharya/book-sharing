@@ -2,7 +2,7 @@ const assert = require('assert'),
     MongoClient = require('mongodb').MongoClient,
     passwordEncrypt = require('../utils/passwordEncrypt');
 
-const dbUrl = 'mongodb://localhost/booksharing';
+const dbUrl = require('../config').dbUrl;
 
 const user = function (name, email, password, address, contact, city, pincode) {
     this.name = name;
