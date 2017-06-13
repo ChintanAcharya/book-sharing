@@ -1,0 +1,88 @@
+<style>
+    .details-left {
+        float: left;
+        height: 200px;
+        padding: 0 20px 0 10px;
+        width: 30%;
+        max-width: 150px;
+    }
+
+    .details-right {
+        height: 200px;
+        padding: 0 15px;
+        width: 870px;
+    }
+
+    .p-small-margin {
+        margin-top: 6px !important;
+        margin-bottom: 6px !important;
+    }
+
+    .h3-small-margin {
+        margin-bottom: 8px;
+    }
+
+    .book-section {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .details-button {
+        float: right;
+    }
+
+    .search-section {
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
+
+    .search-button {
+        margin-left: 16px;
+    }
+</style>
+
+<div class="uk-container uk-container-small">
+
+    <div class="uk-margin-top">
+        <h2>View Posted Books</h2>
+    </div>
+    <!-- Search section -->
+    <div class="search-section">
+        <form method="get">
+            <div class="uk-margin-top">
+                <input type="text" class="uk-input uk-width-2-5" id="search" name="q"
+                       placeholder="Search for a book...">
+                <button type="submit" class="uk-button uk-button-primary search-button">Go</button>
+            </div>
+        </form>
+    </div>
+    <!-- end Search section -->
+
+    <hr>
+
+    <!-- Book list -->
+    {{#each books}}
+        <div class="uk-section uk-section-xsmall book-section">
+            <div class="uk-container">
+                <div class="details-left">
+                    <img src="/images/150x200.png" alt="">
+                </div>
+                <div class="details-right">
+                    <h3 class="h3-small-margin">{{name}}</h3>
+                    <p class="p-small-margin"><b>Author:</b>&nbsp;&nbsp;{{author}}</p>
+                    <p class="p-small-margin"><b>Publication:</b>&nbsp;&nbsp;{{publication}}</p>
+                    <p class="p-small-margin"><b>Details:</b>&nbsp;&nbsp;{{details}}</p>
+                    <p class="p-small-margin"><b>Location:</b>&nbsp;&nbsp;{{city}}</p>
+                    <p class="p-small-margin"><b>Condition:</b>&nbsp;&nbsp;{{condition}}</p>
+                    <div>
+                        <a href="/viewPosts/{{_id}}">
+                            <button class="uk-button uk-button-primary details-button">View details</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    {{/each}}
+    <!--end Book list -->
+</div>

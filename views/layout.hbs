@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>{{title}}</title>
 
-    <link rel="stylesheet" href="css/vendor/uikit.min.css"/>
-    <script src="js/vendor/jquery-3.2.1.min.js"></script>
-    <script src="js/vendor/uikit.min.js"></script>
-    <script src="js/vendor/uikit-icons.min.js"></script>
+    <link rel="stylesheet" href="/css/vendor/uikit.min.css"/>
+    <script src="/js/vendor/jquery-3.2.1.min.js"></script>
+    <script src="/js/vendor/uikit.min.js"></script>
+    <script src="/js/vendor/uikit-icons.min.js"></script>
 
 </head>
 <body>
@@ -19,7 +19,7 @@
         <ul class="uk-navbar-nav">
             <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
             <li class="uk-active"><a href="/">Home</a></li>
-            <li><a href="#">View Requests</a></li>
+            <li><a href="viewRequests">View Requests</a></li>
             <li><a href="request">Request a book</a></li>
             <li><a href="post">Post a book</a></li>
         </ul>
@@ -28,9 +28,12 @@
 
     <div class="uk-navbar-center">
         <div class="uk-navbar-item">
-            <form action="javascript:void(0)">
-                <input class="uk-input uk-form-width-medium" type="text" placeholder="Search...">
-                &nbsp;&nbsp;<a href="#"><span uk-icon="icon: search"></span></a>
+            <form action="/viewPosts">
+                <input class="uk-input uk-form-width-medium" type="text" placeholder="Search..." name="q">
+                &nbsp;&nbsp;
+                <button type="submit" class="uk-button uk-button-default">
+                    <span uk-icon="icon: search"></span>
+                </button>
             </form>
         </div>
     </div>

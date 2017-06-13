@@ -10,9 +10,12 @@ const express = require('express'),
 // TODO: Add additional routes
 const index = require('./routes/index'),
     login = require('./routes/login'),
+    logout = require('./routes/logout'),
     register = require('./routes/register'),
     post = require('./routes/post'),
-    request = require('./routes/request');
+    request = require('./routes/request'),
+    viewRequests = require('./routes/viewRequests'),
+    viewPosts = require('./routes/viewPosts');
 
 //middleware
 const auth = require('./middleware/auth');
@@ -39,9 +42,12 @@ app.use(session({secret: sessionSecret}));
 // route config
 app.use('/', index);
 app.use('/login', login);
+app.use('/logout', logout);
 app.use('/register', register);
 app.use('/post', auth, post);
 app.use('/request', auth, request);
+app.use('/viewRequests', auth, viewRequests);
+app.use('/viewPosts', auth, viewPosts);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -51,7 +57,7 @@ app.use((req, res, next) => {
 });
 
 // error handler
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
